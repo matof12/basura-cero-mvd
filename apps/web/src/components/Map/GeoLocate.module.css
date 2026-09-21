@@ -1,0 +1,20 @@
+.btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 2px solid #1a7a4a;
+  background: #e6f4ed;
+  color: #1a7a4a;
+  font-weight: 600;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.btn:hover { background: #1a7a4a; color: #fff; }
+.btnLocated { border-color: #1d4ed8; background: #dbeafe; color: #1d4ed8; }

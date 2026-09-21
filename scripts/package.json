@@ -1,0 +1,7 @@
+{
+  "name": "sync-scripts",
+  "private": true,
+  "dependencies": {
+    "jszip": "^3.10.1"
+  }
+}

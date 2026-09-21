@@ -1,0 +1,133 @@
+.dashboard {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 32px 24px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.hero {
+  text-align: center;
+  padding-top: 8px;
+  margin-bottom: 4px;
+}
+
+.heroTitle {
+  font-family: 'Sora', sans-serif;
+  font-weight: 800;
+  font-size: 1.85rem;
+  color: #0f1a0f;
+  margin-bottom: 6px;
+}
+
+.heroSub { color: #7a8c7a; font-size: 0.95rem; }
+
+.kpiRow {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  width: 100%;
+}
+
+.chartsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.chartCard {
+  background: #ffffff;
+  border: 1.5px solid #dde3dd;
+  border-radius: 16px;
+  padding: 24px;
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.chartCard.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.chartCardFull { grid-column: 1 / -1; }
+
+.chartCardHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.chartTitle {
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #0f1a0f;
+  margin-bottom: 4px;
+}
+
+.chartSub { font-size: 0.78rem; color: #7a8c7a; }
+
+.filterBar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 16px;
+  background: #e6f4ed;
+  border-radius: 99px;
+  font-size: 0.82rem;
+  color: #1a7a4a;
+  font-weight: 600;
+}
+
+.clearFilter {
+  background: none;
+  border: none;
+  color: #1a7a4a;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 0;
+}
+
+@media (max-width: 768px) {
+  .dashboard {
+    width: 100%;
+    padding: 12px 10px 10px;
+    gap: 12px;
+    overflow: hidden;
+  }
+
+  .hero {
+    margin-bottom: 0;
+    padding-top: 0;
+  }
+
+  .heroTitle {
+    font-size: 1.2rem;
+    margin-bottom: 4px;
+  }
+
+  .heroSub {
+    font-size: 0.75rem;
+    line-height: 1.35;
+  }
+
+  .chartsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .chartCardFull {
+    grid-column: 1;
+  }
+
+  .kpiRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+}

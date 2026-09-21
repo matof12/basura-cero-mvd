@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Sora:wght@400;600;700;800&family=DM+Sans:wght@400;500;600&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  font-family: 'DM Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  background: #f0f2f0;
+  color: #0f1a0f;
+  line-height: 1.6;
+}
+
+#root { min-height: 100vh; }
+
+button { font-family: 'DM Sans', sans-serif; }
+
+a { color: #1a7a4a; text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #f0f2f0; }
+::-webkit-scrollbar-thumb { background: #dde3dd; border-radius: 3px; }
+
+/* Leaflet override */
+.leaflet-container { font-family: 'DM Sans', sans-serif; }

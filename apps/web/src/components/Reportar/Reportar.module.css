@@ -1,0 +1,138 @@
+.reportar {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 48px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.header { text-align: center; }
+
+.title {
+  font-family: 'Sora', sans-serif;
+  font-weight: 800;
+  font-size: 1.85rem;
+  color: #0f1a0f;
+  margin-bottom: 8px;
+}
+
+.subtitle { color: #7a8c7a; font-size: 0.95rem; line-height: 1.6; }
+
+.wppCard {
+  background: #ffffff;
+  border: 2px solid #25d366;
+  border-radius: 16px;
+  padding: 32px;
+  text-align: center;
+}
+
+.wppIcon { font-size: 3.5rem; margin-bottom: 12px; }
+
+.wppTitle {
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: #0f1a0f;
+  margin-bottom: 6px;
+}
+
+.wppDesc { font-size: 0.9rem; color: #3d4f3d; margin-bottom: 24px; line-height: 1.6; }
+
+.wppNumber {
+  font-family: 'DM Mono', monospace;
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: #25d366;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.wppBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #25d366;
+  color: #fff;
+  padding: 14px 32px;
+  border-radius: 16px;
+  font-weight: 700;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: background 0.15s;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.09);
+}
+
+.wppBtn:hover { background: #1eb858; }
+.wppHint { font-size: 0.78rem; color: #7a8c7a; margin-top: 14px; }
+
+.tipsCard {
+  background: #e6f4ed;
+  border: 1.5px solid rgba(26, 122, 74, 0.2);
+  border-radius: 16px;
+  padding: 24px;
+}
+
+.tipsTitle {
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #1a7a4a;
+  margin-bottom: 14px;
+}
+
+.tipsList { display: flex; flex-direction: column; gap: 10px; }
+
+.tipRow { display: flex; align-items: flex-start; gap: 10px; font-size: 0.85rem; color: #3d4f3d; }
+
+.tipNum {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #1a7a4a;
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.channelsCard {
+  background: #ffffff;
+  border: 1.5px solid #dde3dd;
+  border-radius: 16px;
+  padding: 24px;
+}
+
+.channelsTitle {
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #0f1a0f;
+  margin-bottom: 14px;
+}
+
+.channelRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid #dde3dd;
+  font-size: 0.85rem;
+}
+
+.channelRow:last-child { border-bottom: none; }
+.channelIcon { font-size: 1.4rem; flex-shrink: 0; }
+.channelLabel { color: #3d4f3d; flex: 1; }
+.channelVal { font-weight: 600; color: #0f1a0f; }
+.channelLink { color: #1a7a4a; text-decoration: none; font-weight: 600; }
+
+@media (max-width: 768px) {
+  .reportar { padding: 24px 16px; }
+  .title { font-size: 1.4rem; }
+  .wppCard { padding: 20px 16px; }
+  .wppNumber { font-size: 1.4rem; }
+  .wppBtn { padding: 12px 20px; font-size: 0.9rem; }
+}

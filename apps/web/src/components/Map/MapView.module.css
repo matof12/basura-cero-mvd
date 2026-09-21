@@ -1,0 +1,266 @@
+.mapView {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  position: relative;
+}
+
+.sidebar {
+  width: 300px;
+  flex-shrink: 0;
+  background: #ffffff;
+  border-right: 1.5px solid #dde3dd;
+  overflow-y: auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-height: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.sidebarTitle {
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  color: #0f1a0f;
+}
+
+.sidebarSubtitle {
+  font-size: 0.8rem;
+  color: #7a8c7a;
+  margin-top: 2px;
+}
+
+.statRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.statBox {
+  background: #f0f2f0;
+  border-radius: 10px;
+  border: 1.5px solid #dde3dd;
+  padding: 12px;
+  text-align: center;
+}
+
+.statBoxGreen { border-color: #1a7a4a; background: #e6f4ed; }
+.statBoxAmber { border-color: #d97706; background: #fef3c7; }
+.statBoxRed   { border-color: #dc2626; background: #fee2e2; }
+
+.statNum {
+  font-family: 'DM Mono', monospace;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #0f1a0f;
+  line-height: 1;
+}
+
+.statBoxGreen .statNum { color: #1a7a4a; }
+.statBoxAmber .statNum { color: #d97706; }
+.statBoxRed   .statNum { color: #dc2626; }
+
+.statLabel {
+  font-size: 0.7rem;
+  color: #7a8c7a;
+  margin-top: 4px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.divider {
+  border: none;
+  border-top: 1.5px solid #dde3dd;
+}
+
+.filterTitle {
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: #0f1a0f;
+  margin-bottom: 8px;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.chip {
+  padding: 5px 12px;
+  border-radius: 99px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  border: 1.5px solid #dde3dd;
+  background: #ffffff;
+  color: #3d4f3d;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.chip:hover       { border-color: #1a7a4a; color: #1a7a4a; }
+.chipActive       { background: #1a7a4a; border-color: #1a7a4a; color: #fff; }
+.chipAmber.chipActive { background: #d97706; border-color: #d97706; }
+.chipRed.chipActive   { background: #dc2626; border-color: #dc2626; }
+
+.legendList { display: flex; flex-direction: column; gap: 8px; }
+
+.legendRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.8rem;
+  color: #3d4f3d;
+  line-height: 1.4;
+}
+
+.legendDot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.mapWrap {
+  flex: 1;
+  position: relative;
+  z-index: 0;
+  min-width: 0;
+}
+
+.map {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 0;
+}
+
+.mapResetButton {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  z-index: 500;
+  border: 1.5px solid #1a7a4a;
+  background: rgba(255, 255, 255, 0.96);
+  color: #1a7a4a;
+  border-radius: 999px;
+  padding: 9px 14px;
+  font-size: 0.76rem;
+  font-weight: 700;
+  box-shadow: 0 8px 18px rgba(15, 26, 15, 0.12);
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.mapResetButton:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 22px rgba(15, 26, 15, 0.16);
+}
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: 16px;
+  color: #7a8c7a;
+}
+
+.spinner {
+  width: 44px;
+  height: 44px;
+  border: 4px solid #dde3dd;
+  border-top-color: #1a7a4a;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+@media (max-width: 768px) {
+  .mapView {
+    flex-direction: column;
+    height: auto;
+    min-height: 0;
+  }
+
+  .sidebar {
+    width: 100%;
+    max-height: none;
+    border-right: none;
+    border-bottom: 1.5px solid #dde3dd;
+    padding: 12px 12px 14px;
+    gap: 12px;
+    overflow-y: visible;
+  }
+
+  .sidebarTitle {
+    font-size: 0.95rem;
+  }
+
+  .sidebarSubtitle {
+    font-size: 0.72rem;
+  }
+
+  .mapWrap {
+    height: 60vh;
+    min-height: 260px;
+  }
+
+  .statRow {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    gap: 8px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .statRow::-webkit-scrollbar {
+    display: none;
+  }
+
+  .statBox {
+    flex: 0 0 80px;
+    min-width: 80px;
+    padding: 10px 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .statNum {
+    font-size: 1.1rem;
+  }
+
+  .statLabel {
+    font-size: 0.58rem;
+    letter-spacing: 0.04em;
+  }
+
+  .chips {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 6px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .chips::-webkit-scrollbar {
+    display: none;
+  }
+
+  .chip {
+    flex-shrink: 0;
+    padding: 6px 10px;
+  }
+}

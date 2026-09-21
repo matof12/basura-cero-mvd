@@ -1,0 +1,26 @@
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #f0f2f0;
+  color: #0f1a0f;
+  overflow-x: hidden;
+}
+
+.main {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+}
+
+@media (max-width: 768px) {
+  .app {
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  .main {
+    min-height: 0;
+    display: flex;
+  }
+}
