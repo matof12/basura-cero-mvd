@@ -2,8 +2,14 @@ name: Sync CKAN Data
 
 on:
   schedule:
-    - cron: '20 * * * *'   # cada hora en punto
-  workflow_dispatch:        # tambien se puede lanzar manualmente desde GitHub
+    - cron: '20 * * * *'   # GitHub cron corre en UTC
+  workflow_dispatch:       # tambien se puede lanzar manualmente desde GitHub
+
+permissions:
+  contents: write
+
+env:
+  TZ: America/Montevideo
 
 jobs:
   sync:
