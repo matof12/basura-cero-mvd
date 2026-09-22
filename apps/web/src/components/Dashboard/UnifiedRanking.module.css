@@ -49,6 +49,11 @@
   box-shadow: 0 8px 18px rgba(26, 122, 74, 0.2);
 }
 
+.sortBtnActive:hover,
+.sortBtnActive:focus-visible {
+  color: #fff;
+}
+
 .tableWrap {
   overflow: hidden;
   background: #ffffff;
@@ -309,43 +314,40 @@
     width: 100%;
     table-layout: fixed;
     min-width: 0;
-    font-size: 0.72rem;
+    font-size: 0.78rem;
   }
 
   .table th,
   .table td {
-    font-size: 0.72rem;
+    font-size: 0.78rem;
   }
 
   .table th {
-    padding: 6px 3px;
+    padding: 8px 6px;
     letter-spacing: 0.03em;
     white-space: normal;
     overflow: visible;
     text-overflow: unset;
     line-height: 1.15;
-    font-size: 0.58rem;
+    font-size: 0.62rem;
   }
 
-  .table th:nth-child(1) { width: 42%; }
-  .table th:nth-child(2) { width: 16%; }
-  .table th:nth-child(3) { width: 10%; }
-  .table th:nth-child(4) { width: 10%; }
-  .table th:nth-child(5) { width: 10%; }
-  .table th:nth-child(6) { width: 11%; }
-  .table th:nth-child(7) { width: 11%; }
+  .table th:nth-child(1) { width: 35%; }
+  .table th:nth-child(2) { width: 20%; }
+  .table th:nth-child(6) { width: 20%; }
+  .table th:nth-child(7) { width: 25%; }
 
-  .table th:nth-child(3),
-  .table td:nth-child(3),
+  .table th:nth-child(5),
+  .table td:nth-child(5),
   .table th:nth-child(4),
   .table td:nth-child(4),
-  .table th:nth-child(5),
-  .table td:nth-child(5) {
+  .table th:nth-child(3),
+  .table td:nth-child(3) {
     display: none;
   }
 
   .tr td {
-    padding: 6px 4px;
+    padding: 10px 6px;
   }
 
   .medalCell {
@@ -368,17 +370,20 @@
   }
 
   .numCell {
-    font-size: 0.72rem;
+    font-size: 0.78rem;
   }
 
   .stateBarTrack {
-    min-width: unset;
+    min-width: 64px;
     width: 100%;
+    height: 12px;
+    border-radius: 999px;
+    box-shadow: inset 0 1px 2px rgba(15, 26, 15, 0.08);
   }
 
   .pctBadge {
-    font-size: 0.65rem;
-    padding: 2px 4px;
+    font-size: 0.68rem;
+    padding: 3px 6px;
   }
 
   .detailFooter {
