@@ -24,11 +24,17 @@ interface NominatimResponse {
  */
 function formatAddress(data: NominatimResponse): string {
   const a = data.address || {}
-  const road = a.road || a.pedestrian || a.footway || ''
-  const number = a.house_number || ''
-  const suburb = a.suburb || a.neighbourhood || a.quarter || ''
+  const road = (a.road || a.pedestrian || a.footway || '').trim()
+  const rawNumber = (a.house_number || '').trim()
+  const suburb = (a.suburb || a.neighbourhood || a.quarter || '').trim()
 
-  const parts = [road, number, suburb].filter(Boolean)
+  const oneNumber = rawNumber
+    .split(/[;,/]/)[0]
+    .trim()
+
+  const street = oneNumber ? `${road} ${oneNumber}`.trim() : road
+  const parts = [street, suburb].filter(Boolean)
+
   return parts.join(', ') || data.display_name
 }
 

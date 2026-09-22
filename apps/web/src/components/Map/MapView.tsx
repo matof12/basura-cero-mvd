@@ -5,13 +5,58 @@ import { MapContainer, TileLayer, useMap } from 'react-leaflet'
 import L from 'leaflet'
 import 'leaflet.markercluster'
 import type { Container } from '../../types'
-import { getStatus, getStatusColor, getMunicipality } from '../../utils/container'
+import { reverse } from '../../services/geocodingService'
+import { getStatus, getStatusColor, getMunicipality, getPillLabel } from '../../utils/container'
 import { haversine, formatDist } from '../../utils/geoUtils'
-import { MAP_CONFIG } from '../../constants'
+import { MAP_CONFIG, URLS } from '../../constants'
 import { AddressSearch } from './AddressSearch'
 import { GeoLocate } from './GeoLocate'
 import { NearestPanel } from './NearestPanel'
 import styles from './MapView.module.css'
+
+function buildWhatsAppMessage(container: Container, address?: string): string {
+  const municipality = getMunicipality(container.circuitCode)
+  const lines = [
+    'Hola, quiero reportar un contenedor en:',
+    '',
+  ]
+
+  if (address) {
+    lines.push(`📍 ${address}`)
+  }
+
+  lines.push(`🗑️ Lleva ${container.daysWithoutLift} días sin ser levantado`)
+  lines.push(`📋 Circuito: ${container.circuitCode} · Municipio ${municipality}`)
+
+  return lines.join('\n')
+}
+
+function buildPopupHtml(container: Container, address?: string): string {
+  const dias = container.daysWithoutLift
+  const color = getStatusColor(dias)
+  const label = getPillLabel(dias)
+  const message = buildWhatsAppMessage(container, address)
+  const wppHref = `${URLS.WHATSAPP}?text=${encodeURIComponent(message)}`
+
+  return `
+    <div style="min-width:200px;font-family:'DM Sans',sans-serif">
+      <div style="display:flex;justify-content:space-between;margin-bottom:8px;padding-bottom:8px;border-bottom:1px solid #dde3dd">
+        <span style="font-family:'DM Mono',monospace;font-size:0.78rem;color:#7a8c7a">Mun. ${getMunicipality(container.circuitCode)}</span>
+        <span style="background:${color}22;color:${color};padding:2px 8px;border-radius:99px;font-size:0.7rem;font-weight:700">${label}</span>
+      </div>
+      <div style="padding:8px;border-radius:6px;background:${color}15;margin-bottom:8px;display:flex;align-items:center;gap:8px">
+        <span style="font-family:'DM Mono',monospace;font-size:1.6rem;font-weight:500;color:${color}">${dias}</span>
+        <span style="font-size:0.78rem;color:#3d4f3d">días sin<br>levantar</span>
+      </div>
+      <div style="font-size:0.82rem;color:#3d4f3d;margin-bottom:4px"><strong>Circuito:</strong> ${container.circuitCode}</div>
+      <div style="font-size:0.82rem;color:#3d4f3d;margin-bottom:10px"><strong>Datos al:</strong> ${container.dateData}</div>
+      <a href="${wppHref}" target="_blank" rel="noopener"
+        style="display:block;padding:8px;background:#25d366;color:white;border-radius:6px;font-size:0.8rem;font-weight:600;text-align:center;text-decoration:none">
+        📢 Reportar → 092 250 260
+      </a>
+    </div>
+  `
+}
 
 interface MapViewProps {
   containers: Container[]
@@ -25,6 +70,7 @@ interface MapViewProps {
 function ClusterLayer({ containers }: { containers: Container[] }) {
   const map = useMap()
   const clusterRef = useRef<L.MarkerClusterGroup | null>(null)
+  const addressCacheRef = useRef<Map<string, string>>(new Map())
 
   useEffect(() => {
     const cluster = (L as any).markerClusterGroup({
@@ -83,24 +129,38 @@ function ClusterLayer({ containers }: { containers: Container[] }) {
 
       const marker = L.marker([container.lat, container.long], { icon }) as any
       marker._status = status
-      marker.bindPopup(`
-        <div style="min-width:200px;font-family:'DM Sans',sans-serif">
-          <div style="display:flex;justify-content:space-between;margin-bottom:8px;padding-bottom:8px;border-bottom:1px solid #dde3dd">
-            <span style="font-family:'DM Mono',monospace;font-size:0.78rem;color:#7a8c7a">Mun. ${muni}</span>
-            <span style="background:${color}22;color:${color};padding:2px 8px;border-radius:99px;font-size:0.7rem;font-weight:700">${dias === 0 ? 'Hoy' : dias === 1 ? 'Ayer' : `${dias} días`}</span>
-          </div>
-          <div style="padding:8px;border-radius:6px;background:${color}15;margin-bottom:8px;display:flex;align-items:center;gap:8px">
-            <span style="font-family:'DM Mono',monospace;font-size:1.6rem;font-weight:500;color:${color}">${dias}</span>
-            <span style="font-size:0.78rem;color:#3d4f3d">días sin<br>levantar</span>
-          </div>
-          <div style="font-size:0.82rem;color:#3d4f3d;margin-bottom:4px"><strong>Circuito:</strong> ${container.circuitCode}</div>
-          <div style="font-size:0.82rem;color:#3d4f3d;margin-bottom:10px"><strong>Datos al:</strong> ${container.dateData}</div>
-          <a href="https://wa.me/59892250260" target="_blank" rel="noopener"
-            style="display:block;padding:8px;background:#25d366;color:white;border-radius:6px;font-size:0.8rem;font-weight:600;text-align:center;text-decoration:none">
-            📢 Reportar → 092 250 260
-          </a>
-        </div>
-      `, { maxWidth: 260 })
+
+      const key = `${container.lat.toFixed(4)},${container.long.toFixed(4)}`
+      const cachedAddress = addressCacheRef.current.get(key)
+
+      const loadAddress = async () => {
+        const cached = addressCacheRef.current.get(key)
+        if (cached) {
+          marker.setPopupContent(buildPopupHtml(container, cached))
+          return
+        }
+
+        marker.setPopupContent('<div style="min-width:200px;font-family:\'DM Sans\',sans-serif;color:#3d4f3d">Buscando dirección...</div>')
+
+        try {
+          const address = await reverse(container.lat, container.long)
+          addressCacheRef.current.set(key, address)
+          marker.setPopupContent(buildPopupHtml(container, address))
+        } catch {
+          marker.setPopupContent(buildPopupHtml(container))
+        }
+      }
+
+      marker.bindPopup(buildPopupHtml(container, cachedAddress), { maxWidth: 260 })
+      marker.on('popupopen', () => {
+        const nextCached = addressCacheRef.current.get(key)
+        if (nextCached) {
+          marker.setPopupContent(buildPopupHtml(container, nextCached))
+          return
+        }
+
+        void loadAddress()
+      })
 
       cluster.addLayer(marker)
     })
