@@ -11,6 +11,84 @@
   flex: 1;
   min-height: 0;
   display: flex;
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
+
+.mainLoading {
+  opacity: 0.25;
+  transform: scale(0.995);
+  filter: blur(0.4px);
+}
+
+.viewLoader {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(240, 242, 240, 0.12);
+  z-index: 1200;
+  pointer-events: none;
+}
+
+.loaderStage {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.binSpinner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  font-size: 2.7rem;
+  line-height: 1;
+  filter: drop-shadow(0 8px 12px rgba(26, 122, 74, 0.15));
+  animation: spinBin 1.1s linear infinite;
+}
+
+.loaderText {
+  position: absolute;
+  left: 50%;
+  bottom: 16vh;
+  transform: translateX(-50%);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #1f2a1f;
+}
+
+@keyframes spinBin {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  25% {
+    transform: rotate(90deg) scale(1.04);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.08);
+  }
+  75% {
+    transform: rotate(270deg) scale(1.04);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+.footer {
+  background: #ffffff;
+  border-top: 1px solid #edf1ee;
+  text-align: center;
+  padding: 8px 16px 10px;
+  font-size: 0.7rem;
+  color: #1a1f1a;
+  letter-spacing: 0.03em;
+  line-height: 1.4;
 }
 
 @media (max-width: 768px) {

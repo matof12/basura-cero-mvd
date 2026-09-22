@@ -15,7 +15,7 @@ export function DataBanner({ isRealData, lastUpdate }: DataBannerProps) {
     >
       <span>
         {isRealData
-          ? '✅ Datos en tiempo real · Portal de Datos Abiertos de Montevideo'
+          ? '✅ Datos en tiempo real'
           : '⚠️ No se pudieron cargar los datos reales'}
       </span>
       {lastUpdate && (

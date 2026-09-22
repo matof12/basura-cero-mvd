@@ -21,21 +21,6 @@ const howItWorks = [
   },
 ]
 
-const dataSources = [
-  {
-    label: 'Fuente',
-    value: 'Portal de Datos Abiertos — Intendencia de Montevideo',
-  },
-  {
-    label: 'Dataset',
-    value: 'Levantes de contenedores domiciliarios',
-  },
-  {
-    label: 'Link',
-    value: 'https://ckan.montevideo.gub.uy/dataset/informacion-de-levantes-de-contenedores-domiciliarios',
-    href: 'https://ckan.montevideo.gub.uy/dataset/informacion-de-levantes-de-contenedores-domiciliarios',
-  },
-]
 
 export function Sobre() {
   return (

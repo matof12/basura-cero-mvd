@@ -33,6 +33,13 @@
   color: #7a8c7a;
 }
 
+.licenseNote {
+  color: #5f7a5f;
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
 @media (max-width: 768px) {
   .banner {
     flex-direction: column;

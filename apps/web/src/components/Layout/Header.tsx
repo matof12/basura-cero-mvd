@@ -46,9 +46,6 @@ export function Header({ currentView, onChangeView }: HeaderProps) {
 
       </div>
 
-      <div className={styles.footerNote}>
-        Datos bajo Licencia DAG-UY · Portal de Datos Abiertos IM
-      </div>
     </header>
   )
 }
