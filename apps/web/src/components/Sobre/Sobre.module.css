@@ -1,0 +1,208 @@
+.sobre {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 48px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.hero {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-bottom: 8px;
+}
+
+.eyebrow {
+  margin: 0;
+  color: #1a7a4a;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.title {
+  margin: 0;
+  font-family: 'Sora', sans-serif;
+  font-weight: 800;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  line-height: 1.1;
+  color: #0f1a0f;
+}
+
+.subtitle {
+  margin: 0;
+  color: #1a7a4a;
+  font-size: 1.08rem;
+  font-weight: 600;
+}
+
+.sectionBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.sectionTitle {
+  margin: 0;
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: #0f1a0f;
+}
+
+.text {
+  margin: 0;
+  color: #3d4f3d;
+  font-size: 0.98rem;
+  line-height: 1.7;
+}
+
+.cardsRow {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.card {
+  background: #fff;
+  border: 1.5px solid #dde3dd;
+  border-radius: 16px;
+  padding: 20px 16px;
+  box-shadow: 0 4px 12px rgba(15, 26, 15, 0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 190px;
+}
+
+.cardIcon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: #e6f4ed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+}
+
+.cardTitle {
+  margin: 0;
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  color: #0f1a0f;
+}
+
+.cardText {
+  margin: 0;
+  color: #3d4f3d;
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+.dataCard {
+  background: #f4f6f4;
+  border: 1px solid #dde3dd;
+  border-left: 4px solid #1a7a4a;
+  border-radius: 14px;
+  padding: 18px 18px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.dataItem {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #dde3dd;
+}
+
+.dataItem:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.dataLabel {
+  font-family: 'Sora', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #1a7a4a;
+}
+
+.dataValue,
+.dataLink {
+  color: #3d4f3d;
+  font-size: 0.93rem;
+  line-height: 1.5;
+}
+
+.dataLink,
+.licenseLink,
+.githubLink {
+  color: #1a7a4a;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.dataLink:hover,
+.licenseLink:hover,
+.githubLink:hover {
+  text-decoration: underline;
+}
+
+.licenseBox {
+  background: #e6f4ed;
+  border: 1px solid rgba(26, 122, 74, 0.2);
+  border-radius: 14px;
+  padding: 20px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.licenseText {
+  margin: 0;
+  color: #1d3d2a;
+  font-size: 0.94rem;
+  line-height: 1.7;
+}
+
+.githubLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  padding: 12px 18px;
+  border: 1.5px solid #1a7a4a;
+  border-radius: 12px;
+  background: transparent;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.githubLink:hover {
+  background: rgba(26, 122, 74, 0.04);
+  text-decoration: none;
+}
+
+@media (max-width: 768px) {
+  .sobre {
+    padding: 24px 16px;
+  }
+
+  .cardsRow {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    min-height: auto;
+  }
+}

@@ -58,9 +58,9 @@ export function Dashboard({ containers, loading, onViewInMap }: DashboardProps) 
 
       <div className={styles.kpiRow}>
         <KpiCard icon="🗑️" value={stats.total} label="Contenedores totales" color="#0f1a0f" />
-        <KpiCard icon="✅" value={stats.ok} label="Normal (0-1 días)" color="#1a7a4a" />
-        <KpiCard icon="⚠️" value={stats.warn} label="Atención (2 días)" color="#d97706" />
-        <KpiCard icon="🚨" value={stats.crit} label="Crítico (3+ días)" color="#dc2626" />
+        <KpiCard icon="✅" value={stats.ok} label="Normal (0-1 día sin levantar)" color="#1a7a4a" />
+        <KpiCard icon="⚠️" value={stats.warn} label="Atención (2 días sin levantar)" color="#d97706" />
+        <KpiCard icon="🚨" value={stats.crit} label="Crítico (3+ días sin levantar)" color="#dc2626" />
       </div>
 
       <UnifiedRanking

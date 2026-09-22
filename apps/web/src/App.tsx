@@ -6,6 +6,7 @@ import { DataBanner } from './components/Layout/DataBanner'
 import { MapView } from './components/Map/MapView'
 import { Dashboard } from './components/Dashboard/Dashboard'
 import { Reportar } from './components/Reportar/Reportar'
+import { Sobre } from './components/Sobre/Sobre'
 import styles from './App.module.css'
 
 function App() {
@@ -24,6 +25,8 @@ function App() {
         return <Dashboard containers={containers} loading={loading} onViewInMap={handleViewInMap} />
       case 'reportar':
         return <Reportar />
+      case 'sobre':
+        return <Sobre />
       default:
         return (
           <MapView

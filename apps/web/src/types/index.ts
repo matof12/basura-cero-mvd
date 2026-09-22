@@ -1,7 +1,7 @@
 // ─── Primitivos ───────────────────────────────────────────
 export type ContainerStatus = 'ok' | 'warn' | 'crit'
 
-export type ViewMode = 'map' | 'dashboard' | 'reportar'
+export type ViewMode = 'map' | 'dashboard' | 'reportar' | 'sobre'
 
 // ─── Datos del CSV (un contenedor) ────────────────────────
 export interface Container {

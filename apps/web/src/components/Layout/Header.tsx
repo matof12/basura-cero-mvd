@@ -10,6 +10,7 @@ const NAV_BUTTONS: Array<{ view: ViewMode; label: string }> = [
   { view: 'map',       label: 'Mapa'      },
   { view: 'dashboard', label: 'Dashboard' },
   { view: 'reportar',  label: 'Reportar'  },
+  { view: 'sobre',     label: 'Sobre el proyecto'     },
 ]
 
 export function Header({ currentView, onChangeView }: HeaderProps) {
@@ -43,6 +44,10 @@ export function Header({ currentView, onChangeView }: HeaderProps) {
           ))}
         </nav>
 
+      </div>
+
+      <div className={styles.footerNote}>
+        Datos bajo Licencia DAG-UY · Portal de Datos Abiertos IM
       </div>
     </header>
   )

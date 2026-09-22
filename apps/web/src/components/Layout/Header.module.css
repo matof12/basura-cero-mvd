@@ -92,6 +92,16 @@
   color: #ffffff;
 }
 
+.footerNote {
+  border-top: 1px solid #edf1ee;
+  background: #f4f6f4;
+  color: #5f7a5f;
+  font-size: 0.73rem;
+  letter-spacing: 0.04em;
+  text-align: center;
+  padding: 8px 16px 10px;
+}
+
 @media (max-width: 768px) {
   .inner {
     height: auto;

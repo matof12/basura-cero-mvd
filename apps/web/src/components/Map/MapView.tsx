@@ -298,19 +298,19 @@ export function MapView({
             <div className={styles.statNum}>
               {filteredContainers.filter(c => getStatus(c.daysWithoutLift) === 'ok').length.toLocaleString('es-UY')}
             </div>
-            <div className={styles.statLabel}>0-1 días</div>
+            <div className={styles.statLabel}>0-1 día sin levantar</div>
           </div>
           <div className={`${styles.statBox} ${styles.statBoxAmber}`}>
             <div className={styles.statNum}>
               {filteredContainers.filter(c => getStatus(c.daysWithoutLift) === 'warn').length.toLocaleString('es-UY')}
             </div>
-            <div className={styles.statLabel}>2 días</div>
+            <div className={styles.statLabel}>2 días sin levantar</div>
           </div>
           <div className={`${styles.statBox} ${styles.statBoxRed}`}>
             <div className={styles.statNum}>
               {filteredContainers.filter(c => getStatus(c.daysWithoutLift) === 'crit').length.toLocaleString('es-UY')}
             </div>
-            <div className={styles.statLabel}>3+ días</div>
+            <div className={styles.statLabel}>3+ días sin levantar</div>
           </div>
         </div>
 
