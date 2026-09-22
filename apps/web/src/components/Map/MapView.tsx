@@ -118,7 +118,6 @@ function ClusterLayer({ containers }: { containers: Container[] }) {
       const dias   = container.daysWithoutLift
       const status = getStatus(dias)
       const color  = getStatusColor(dias)
-      const muni   = getMunicipality(container.circuitCode)
 
       const icon = L.divIcon({
         html: `<div style="width:12px;height:12px;background:${color};border-radius:50%;border:2px solid white;box-shadow:0 1px 3px rgba(0,0,0,0.3)"></div>`,
