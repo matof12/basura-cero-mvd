@@ -2,7 +2,7 @@ name: Sync CKAN Data
 
 on:
   schedule:
-    - cron: '0 * * * *'   # cada hora en punto
+    - cron: '20 * * * *'   # cada hora en punto
   workflow_dispatch:        # tambien se puede lanzar manualmente desde GitHub
 
 jobs:
