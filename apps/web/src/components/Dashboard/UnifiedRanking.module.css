@@ -302,20 +302,83 @@
   }
 
   .tableWrap {
-    overflow-x: auto;
+    overflow: hidden;
   }
 
   .table {
-    min-width: 0;
     width: 100%;
-    table-layout: auto;
+    table-layout: fixed;
+    min-width: 0;
+    font-size: 0.72rem;
   }
 
-  .table th:nth-child(6),
-  .table td:nth-child(6),
-  .table th:nth-child(7),
-  .table td:nth-child(7) {
+  .table th,
+  .table td {
+    font-size: 0.72rem;
+  }
+
+  .table th {
+    padding: 6px 3px;
+    letter-spacing: 0.03em;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: unset;
+    line-height: 1.15;
+    font-size: 0.58rem;
+  }
+
+  .table th:nth-child(1) { width: 42%; }
+  .table th:nth-child(2) { width: 16%; }
+  .table th:nth-child(3) { width: 10%; }
+  .table th:nth-child(4) { width: 10%; }
+  .table th:nth-child(5) { width: 10%; }
+  .table th:nth-child(6) { width: 11%; }
+  .table th:nth-child(7) { width: 11%; }
+
+  .table th:nth-child(3),
+  .table td:nth-child(3),
+  .table th:nth-child(4),
+  .table td:nth-child(4),
+  .table th:nth-child(5),
+  .table td:nth-child(5) {
     display: none;
+  }
+
+  .tr td {
+    padding: 6px 4px;
+  }
+
+  .medalCell {
+    gap: 4px;
+  }
+
+  .medal {
+    width: 20px;
+    height: 20px;
+    font-size: 0.65rem;
+    flex-shrink: 0;
+  }
+
+  .muniName {
+    font-size: 0.72rem;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: unset;
+    line-height: 1.2;
+  }
+
+  .numCell {
+    font-size: 0.72rem;
+  }
+
+  .stateBarTrack {
+    min-width: unset;
+    width: 100%;
+  }
+
+  .pctBadge {
+    font-size: 0.65rem;
+    padding: 2px 4px;
   }
 
   .detailFooter {

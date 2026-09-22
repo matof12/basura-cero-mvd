@@ -47,7 +47,7 @@ export function Dashboard({ containers, loading, onViewInMap }: DashboardProps) 
       <div className={styles.hero}>
         <h2 className={styles.heroTitle}>Montevideo en tiempo real</h2>
         <p className={styles.heroSub}>
-          Estado de recolección de contenedores domiciliarios · Actualizado hoy
+          Estado de recolección de contenedores domiciliarios
         </p>
       </div>
 
