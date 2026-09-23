@@ -181,11 +181,24 @@ function FocusLocationMarker({ location }: { location: { lat: number; lng: numbe
       return
     }
 
+    const userIcon = L.divIcon({
+      html: `
+        <div class="${styles.userMarker}">
+          <div class="${styles.userMarkerRing}"></div>
+          <div class="${styles.userMarkerDot}"></div>
+        </div>
+      `,
+      className: '',
+      iconSize: [20, 20],
+      iconAnchor: [10, 10],
+    })
+
     if (markerRef.current) {
       markerRef.current.remove()
+      markerRef.current = null
     }
 
-    const marker = L.marker([location.lat, location.lng])
+    const marker = L.marker([location.lat, location.lng], { icon: userIcon })
       .addTo(map)
       .bindPopup(location.name)
 

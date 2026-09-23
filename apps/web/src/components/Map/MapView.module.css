@@ -182,7 +182,48 @@
   animation: spin 0.7s linear infinite;
 }
 
+.userMarker {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.userMarkerRing {
+  position: absolute;
+  inset: 0;
+  background: rgba(29, 78, 216, 0.22);
+  border-radius: 50%;
+  animation: pulse 2s ease-out infinite;
+}
+
+.userMarkerDot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 12px;
+  height: 12px;
+  background: #1d4ed8;
+  border: 2.5px solid white;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
 @keyframes spin { to { transform: rotate(360deg); } }
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
 
 @media (max-width: 768px) {
   .mapView {
